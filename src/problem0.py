@@ -9,8 +9,8 @@ These problems illustrate concepts that previous problems have not emphasized:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Nihaar Munnamgi.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 import testing_helper
@@ -206,7 +206,11 @@ def problem0a(n):
     #        Simply try a few examples to convince yourself of this.
     #        ASK FOR HELP if you do not understand this hint.
     # -------------------------------------------------------------------------
-
+    sum = sum_of_digits(n)
+    if sum % 2 == 0:
+        return False
+    else:
+        return True
 
 def run_test_problem0b():
     """ Tests the   problem0b   function. """
@@ -271,7 +275,11 @@ def problem0b(n):
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     ###########################################################################
     # ------------------------------------------------------------------
-
+    count = 0
+    for k in range(2,n+1):
+        if is_prime(k):
+            count = count + 1
+    return count
 
 def run_test_problem0c():
     """ Tests the   problem0c  function. """
@@ -338,7 +346,13 @@ def problem0c(circle, n, window):
     #   renders with a half-second pause after rendering.
     ###########################################################################
     # -------------------------------------------------------------------------
-
+    circle.attach_to(window)
+    x_val = circle.center.x + circle.radius*2
+    for k in range(n):
+        new_circle = rg.Circle(rg.Point(x_val, circle.center.y),circle.radius)
+        new_circle.attach_to(window)
+        x_val = x_val + circle.radius*2
+        window.render(0.5)
 
 ###############################################################################
 # Our tests use the following to print error messages in red.

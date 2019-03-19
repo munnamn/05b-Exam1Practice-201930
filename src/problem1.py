@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 1.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Nihaar Munnamgi.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -28,6 +28,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 
 import testing_helper
 import time
+import math
 
 
 def main():
@@ -176,8 +177,11 @@ def problem1a(m, n):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 minutes.
     # -------------------------------------------------------------------------
+    total = 0
+    for k in range(n ** 2 - m ** 2 + 1):
+        total = total + math.sin(k + m ** 2)
 
-
+    return total
 def run_test_problem1b():
     """ Tests the   problem1b   function. """
     # -------------------------------------------------------------------------
@@ -198,6 +202,23 @@ def run_test_problem1b():
     print('--------------------------------------------------')
     print('Testing the   problem1b   function:')
     print('--------------------------------------------------')
+    #test 1
+    expected = 5
+    actual = problem1b(3,5)
+    print('Test 1 expected:', expected)
+    print('       actual:', actual)
+
+    #test 2
+    expected = 1
+    actual = problem1b(2,1)
+    print('Test 1 expected:', expected)
+    print('       actual:', actual)
+
+    #test 3
+    expected = 44
+    actual = problem1b(5,40)
+    print('Test 1 expected:', expected)
+    print('       actual:', actual)
 
 
 def problem1b(m, f):
@@ -230,6 +251,12 @@ def problem1b(m, f):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   10 to 15 minutes.
     # -------------------------------------------------------------------------
+    count = 0
+    for k in range(m, f * m + 1):
+        if is_prime(k):
+            count = count + 1
+
+    return count
 
 
 def run_test_problem1c():
@@ -328,7 +355,11 @@ def problem1c(n):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 20 minutes.
     # -------------------------------------------------------------------------
-
+    product = 1
+    for k in range(2,n + 1):
+        if is_prime(k):
+            product = product*k
+    return sum_of_digits(product)
 
 ###############################################################################
 # Our tests use the following to print error messages in red.
